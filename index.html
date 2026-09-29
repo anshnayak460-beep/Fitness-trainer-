@@ -1,0 +1,585 @@
+ html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ansh Fitness Academy</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#080808;
+  color:white;
+}
+
+/* NAVBAR */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#111;
+  padding:16px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #222;
+}
+
+.logo{
+  color:#00ff88;
+  font-size:25px;
+  font-weight:bold;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:bold;
+}
+
+nav a:hover{
+  color:#00ff88;
+}
+
+/* HERO */
+.hero{
+  min-height:90vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:30px 20px;
+
+  background:
+  linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.8)),
+  url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80")
+  center/cover;
+}
+
+.hero h1{
+  font-size:58px;
+  margin-bottom:15px;
+}
+
+.hero h1 span{
+  color:#00ff88;
+}
+
+.hero p{
+  font-size:20px;
+  color:#ddd;
+  margin-bottom:30px;
+}
+
+.btn{
+  display:inline-block;
+  padding:13px 25px;
+  background:#00ff88;
+  color:#000;
+  text-decoration:none;
+  font-weight:bold;
+  border-radius:8px;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:scale(1.06);
+  background:white;
+}
+
+/* SECTIONS */
+section{
+  padding:75px 8%;
+}
+
+.title{
+  text-align:center;
+  font-size:38px;
+  margin-bottom:40px;
+}
+
+.title span{
+  color:#00ff88;
+}
+
+/* ABOUT */
+.about{
+  max-width:850px;
+  margin:auto;
+  text-align:center;
+  color:#bbb;
+  font-size:18px;
+}
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:#151515;
+  padding:25px;
+  border-radius:15px;
+  text-align:center;
+  border:1px solid #252525;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:#00ff88;
+}
+
+.card h3{
+  color:#00ff88;
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#aaa;
+}
+
+.workout-img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:15px;
+}
+
+/* BMI */
+.bmi-box{
+  max-width:500px;
+  margin:auto;
+  background:#151515;
+  padding:30px;
+  border-radius:15px;
+  text-align:center;
+}
+
+.bmi-box input{
+  width:100%;
+  padding:13px;
+  margin:8px 0;
+  border:none;
+  border-radius:7px;
+  outline:none;
+}
+
+.bmi-box button{
+  width:100%;
+  padding:13px;
+  margin-top:10px;
+  background:#00ff88;
+  border:none;
+  border-radius:7px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+#bmiResult{
+  margin-top:20px;
+  color:#00ff88;
+  font-size:20px;
+  font-weight:bold;
+}
+
+/* TIMER */
+.timer{
+  text-align:center;
+  background:#111;
+}
+
+#time{
+  font-size:70px;
+  color:#00ff88;
+  margin:20px;
+}
+
+.timer button{
+  padding:12px 20px;
+  margin:5px;
+  border:none;
+  border-radius:7px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.start{
+  background:#00ff88;
+}
+
+.reset{
+  background:white;
+}
+
+/* TRAINER */
+.trainer{
+  text-align:center;
+  max-width:600px;
+  margin:auto;
+}
+
+.trainer img{
+  width:180px;
+  height:180px;
+  object-fit:cover;
+  border-radius:50%;
+  border:4px solid #00ff88;
+  margin-bottom:20px;
+}
+
+/* CONTACT */
+.contact{
+  background:#111;
+  text-align:center;
+}
+
+.contact p{
+  margin:10px;
+  color:#bbb;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:25px;
+  background:#050505;
+  color:#777;
+}
+
+footer span{
+  color:#00ff88;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+  header{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  nav a{
+    margin:0 6px;
+    font-size:13px;
+  }
+
+  .hero h1{
+    font-size:40px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .title{
+    font-size:30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+
+<div class="logo">ANSH FITNESS</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#programs">Programs</a>
+<a href="#workouts">Workouts</a>
+<a href="#tools">Tools</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</header>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+<div>
+
+<h1>BUILD YOUR <span>STRONGEST</span> SELF</h1>
+
+<p>Train Hard • Stay Strong • Never Give Up</p>
+
+<a href="#programs" class="btn">START TRAINING</a>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+
+<h2 class="title">ABOUT <span>US</span></h2>
+
+<p class="about">
+Welcome to Ansh Fitness Academy. Our mission is to help people
+improve strength, stamina, fitness and discipline through regular
+training and a healthy lifestyle.
+</p>
+
+</section>
+
+
+<!-- PROGRAMS -->
+<section id="programs">
+
+<h2 class="title">OUR <span>PROGRAMS</span></h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>💪 Strength</h3>
+<p>Build strength with structured bodyweight and resistance workouts.</p>
+</div>
+
+<div class="card">
+<h3>🏃 Running</h3>
+<p>Improve stamina, speed and endurance through running training.</p>
+</div>
+
+<div class="card">
+<h3>🔥 Fitness</h3>
+<p>Full-body workouts designed to improve overall fitness.</p>
+</div>
+
+<div class="card">
+<h3>🧘 Flexibility</h3>
+<p>Improve mobility and movement with stretching exercises.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- WORKOUTS -->
+<section id="workouts">
+
+<h2 class="title">POPULAR <span>WORKOUTS</span></h2>
+
+<div class="cards">
+
+<div class="card">
+
+<img class="workout-img"
+src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80"
+alt="Strength workout">
+
+<h3>Strength Workout</h3>
+
+<p>Push-ups, squats and strength exercises.</p>
+
+</div>
+
+
+<div class="card">
+
+<img class="workout-img"
+src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80"
+alt="Running workout">
+
+<h3>Running Training</h3>
+
+<p>Running drills for stamina and endurance.</p>
+
+</div>
+
+
+<div class="card">
+
+<img class="workout-img"
+src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80"
+alt="Gym workout">
+
+<h3>Full Body</h3>
+
+<p>Complete workout for overall fitness.</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- BMI CALCULATOR -->
+<section id="tools">
+
+<h2 class="title">BMI <span>CALCULATOR</span></h2>
+
+<div class="bmi-box">
+
+<input type="number" id="height" placeholder="Height in cm">
+
+<input type="number" id="weight" placeholder="Weight in kg">
+
+<button onclick="calculateBMI()">Calculate BMI</button>
+
+<div id="bmiResult"></div>
+
+</div>
+
+</section>
+
+
+<!-- WORKOUT TIMER -->
+<section class="timer">
+
+<h2 class="title">WORKOUT <span>TIMER</span></h2>
+
+<div id="time">00:00</div>
+
+<button class="start" onclick="startTimer()">START</button>
+
+<button class="reset" onclick="resetTimer()">RESET</button>
+
+</section>
+
+
+<!-- TRAINER -->
+<section>
+
+<h2 class="title">MEET YOUR <span>TRAINER</span></h2>
+
+<div class="trainer">
+
+<img
+src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=500&q=80"
+alt="Fitness trainer">
+
+<h2>Ansh Nayak</h2>
+
+<p>
+Fitness enthusiast focused on strength, stamina,
+discipline and a healthy lifestyle.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+<h2 class="title">CONTACT <span>US</span></h2>
+
+<p>📧 Email: your-email@gmail.com</p>
+
+<p>📱 Phone: +91 XXXXX XXXXX</p>
+
+<p>📍 India</p>
+
+<br>
+
+<a href="mailto:your-email@gmail.com" class="btn">
+CONTACT NOW
+</a>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+<p>
+© 2026 <span>Ansh Fitness Academy</span> | Train Hard • Stay Strong
+</p>
+
+</footer>
+
+
+<script>
+
+/* BMI CALCULATOR */
+
+function calculateBMI(){
+
+let height = document.getElementById("height").value;
+let weight = document.getElementById("weight").value;
+
+if(height === "" || weight === ""){
+document.getElementById("bmiResult").innerHTML =
+"Please enter height and weight.";
+return;
+}
+
+let heightMeter = height / 100;
+
+let bmi = weight / (heightMeter * heightMeter);
+
+document.getElementById("bmiResult").innerHTML =
+"Your BMI: " + bmi.toFixed(1);
+
+}
+
+
+/* WORKOUT TIMER */
+
+let seconds = 0;
+let timer = null;
+
+function updateTimer(){
+
+let min = Math.floor(seconds / 60);
+let sec = seconds % 60;
+
+min = min < 10 ? "0" + min : min;
+sec = sec < 10 ? "0" + sec : sec;
+
+document.getElementById("time").innerHTML =
+min + ":" + sec;
+
+}
+
+function startTimer(){
+
+if(timer === null){
+
+timer = setInterval(function(){
+
+seconds++;
+updateTimer();
+
+},1000);
+
+}
+
+}
+
+function resetTimer(){
+
+clearInterval(timer);
+
+timer = null;
+
+seconds = 0;
+
+updateTimer();
+
+}
+
+</script>
+
+</body>
+  </html>
